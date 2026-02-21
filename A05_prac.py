@@ -17,24 +17,22 @@ for i in range(4, len(lines)):
 
 
 optimal_order = 0
-max_profit = 0
-max_sales = 0
+max_profit = float("-inf")
 
-for order in range(1, len(p)+1):
+for order in range(len(p)):
     profit = 0
-    for sale in range(order+1):
-        if sale == order:
-            for i in range(sale, len(p)+1):
-                profit += 
-            profit += p[sale-1]*(r-c)
-        else:
-            profit += p[sale-1]*(r-c)
-        # if sale <= order:
-        #     profit += p[sale-1]*(r-c)
-        #     max_sales += 1
-    profit -= (len(p) - order) * c  # subtract cost of unsold items
 
+    for sale in range(len(p)):
+        sold = min(order, sale)
+        leftover = order - sold
+        profit += (r*sold + s*leftover - c*order)*p[sale]
+        # if sale == order:
+        #     for i in range(sale, len(p)+1):
+        #         profit += p[i-1]*order*(r-c)
+        # else:
+        #     profit += p[sale-1]*(r*sale-s*(order-sale)-c*order)
+    if profit > max_profit:
+        max_profit = profit
+        optimal_order = order
 
-
-# c, r, N = map(int, lines[:3])
-# p = list(map(float, lines[3:]))
+print(optimal_order, math.floor(max_profit))

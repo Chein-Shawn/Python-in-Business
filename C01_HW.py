@@ -16,6 +16,17 @@ class problem:
         self.runtime_error = runtime_error
         self.time_limit_exceeded = time_limite_exceeded
         self.wrong_answer = wrong_answer
+
+status_to_idx = {
+    "Accepted": 0,
+    "Compile Error": 1,
+    "Runtime Error": 2,
+    "Time Limit Exceed": 3,
+    "Wrong Answer": 4}
+counts = [[0]*5 for i in range(4)]
+start, end = input("Enter start and end time: ").strip().split()
+
+
 midterm_path = "/Users/shawn/Desktop/GitHub/Python-in-Business/midterm2.csv"
 with open(midterm_path, 'r', encoding='utf-8') as midterm:
     header = midterm.readline()
@@ -25,19 +36,16 @@ with open(midterm_path, 'r', encoding='utf-8') as midterm:
     submissions = []
     for line in body:
         count += 1
-        subid, stuid, prob, status, score, codelen, subtime = line.split(",")
+        subid, stuid, prob, status, score, codelen, subtime = line.strip().split(",")
         sub = Submission(subid, stuid, prob, status, score, codelen, subtime)
         # print(f"Submission {count}: {sub.subid}, {sub.stuid}, {sub.prob}, {sub.status}, {sub.score}, {sub.codelen}, {sub.subtime}")
         submissions.append(sub)
     submissions = list(reversed(submissions))
-    str = input("Enter start and end time: ")
-    start, end = str.replace.split()
-    problems = []
 
     for sub in submissions:
-        if sub.subtime >= start and sub.subtime <= end:
-            if sub.prob not in problems:
-                problems.append(sub.prob)
-            if sub.status not in 
-
-            
+        if start <= sub.subtime <= end:
+            counts[int(sub.prob)-1][status_to_idx[sub.status]] += 1
+    for row in counts:
+        for column in row:
+            print(column, end = " ")
+        print(";", end = "")

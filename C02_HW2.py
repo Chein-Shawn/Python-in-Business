@@ -8,22 +8,22 @@ with open("ubike.csv", "r", encoding = "cp950") as f:
     lat = {}
     lon = {}
     capacity = {}
-    
 
     for row in csv.DictReader(f):
         time = datetime.datetime.strptime(row["time"], "%Y/%m/%d %H:%M")
         hour = time.hour
-        if id not in station:
-            lat[id] = float(row["latitude"])
-            lon[id] = float(row["longitude"])
-            capacity[id] = int(row["lot"])
-            station[id] = int(row["bike"])
-            count[id] = 1
-
-        else:
-            station[id] += int(row["bike"])
-            capacity[hour] += int(row["lot"])
-            count[hour] += 1
+        if time == 17 or time == 18:
+            id = int(row["id"])
+            if id not in station:
+                lat[id] = float(row["latitude"])
+                lon[id] = float(row["longitude"])
+                capacity[id] = int(row["lot"])
+                station[id] = int(row["bike"])
+                count[id] = 1
+            else:
+                station[id] += int(row["bike"])
+                capacity[hour] += int(row["lot"])
+                count[hour] += 1
 
 # preparation for plotting
 id_seq = station.keys()

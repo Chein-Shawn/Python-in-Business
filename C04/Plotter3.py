@@ -44,7 +44,9 @@ class Plotter(tk.Frame):
     self.makeScatter(x, y)
 
     self.imageMain = ImageTk.PhotoImage(file = "temp.png")
+    # anchor: position
     self.cvsMain.create_image(400, 300, image = self.imageMain, anchor = tk.CENTER)
+    # delete the png file
     os.system("del temp.png")
 
   def makeScatter(self, x, y): 

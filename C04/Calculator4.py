@@ -88,6 +88,8 @@ class Calculator(tk.Frame):
     self.setNumStr("0")
 	
   def clickBtnSqrt(self):
+    # cget(): Get a configuration option's value
+    # get(): Get the widget's current content
     curNum = float(self.txtNum.get("1.0", tk.END))
     self.txtNum.delete("1.0", tk.END)
     self.txtNum.insert("1.0", str(round(math.sqrt(curNum), 2)))

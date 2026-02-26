@@ -34,7 +34,7 @@ class Plotter(tk.Frame):
     x = self.txtX.get("1.0", tk.END).split(",")
     for i in range(len(x)):
       x[i] = float(x[i])
-    
+    # x = map(float(), x)
     y = self.txtY.get("1.0", tk.END).split(",")
     for i in range(len(y)):
       y[i] = float(y[i])

@@ -59,7 +59,7 @@ class Plotter(tk.Frame):
     pyplot.plot(x, y, 'bo')
 
     for i, j in zip(x, y):
-      ax.annotate(str(i) + ", " + str(j), xy = (i + 0.1, j + 0.1))
+      ax.annotate("("+ str(i) + ", " + str(j) + ")", xy = (i + 0.1, j + 0.1))
 
     pyplot.savefig("temp.png") 
   

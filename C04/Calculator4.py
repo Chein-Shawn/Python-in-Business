@@ -1,6 +1,7 @@
 import tkinter as tk
 import tkinter.font as tkFont
 import math
+import os
 from PIL import ImageTk
 
 class Calculator(tk.Frame):
@@ -27,7 +28,8 @@ class Calculator(tk.Frame):
     self.btnNum9 = tk.Button(self, text = "9", height = 1, width = 2, command = self.clickBtnNum9, font = f2) 
     self.btnNum0 = tk.Button(self, text = "0", height = 1, width = 2, command = self.clickBtnNum0, font = f2) 
 
-    self.imageSqrt = ImageTk.PhotoImage(file = "sqrt.png")
+    img_path = os.path.join(os.path.dirname(__file__), "sqrt.png")
+    self.imageSqrt = ImageTk.PhotoImage(file = img_path)
     self.btnSqrt = tk.Button(self, image = self.imageSqrt, command = self.clickBtnSqrt) 
 
     self.txtNum = tk.Text(self, height = 1, width = 7, font = f1) 
@@ -47,10 +49,12 @@ class Calculator(tk.Frame):
 
   def setNumStr(self, content):
     if self.shouldReset == True:
+      # "1.0" 代表第 1 行、第 0 個字元（即文字內容的起點）的索引位置
       self.txtNum.delete("1.0", tk.END)
       self.txtNum.insert("1.0", content)
       self.shouldReset = False
     else: 
+      # tk.END: the end of text
       self.txtNum.insert(tk.END, content)
   
   def clickBtnNum1(self):

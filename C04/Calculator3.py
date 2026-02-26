@@ -1,6 +1,7 @@
 import tkinter as tk
 import tkinter.font as tkFont
 import math
+import os
 from PIL import ImageTk
 
 class Calculator(tk.Frame):
@@ -26,8 +27,10 @@ class Calculator(tk.Frame):
     self.btnNum8 = tk.Button(self, text = "8", height = 1, width = 2, command = self.clickBtnNum8, font = f2) 
     self.btnNum9 = tk.Button(self, text = "9", height = 1, width = 2, command = self.clickBtnNum9, font = f2) 
     self.btnNum0 = tk.Button(self, text = "0", height = 1, width = 2, command = self.clickBtnNum0, font = f2) 
-
-    self.imageSqrt = ImageTk.PhotoImage(file = "sqrt.png")
+    
+    img_path = os.path.join(os.path.dirname(__file__), "sqrt.png")
+    # if just use imageSqrt without self.: it becomes local variable, and would not work
+    self.imageSqrt = ImageTk.PhotoImage(file=img_path)
     self.btnSqrt = tk.Button(self, image = self.imageSqrt, command = self.clickBtnSqrt) 
 
     self.lblNum = tk.Label(self, height = 1, width = 7, text = "0", font = f1) 

@@ -18,6 +18,7 @@ class Calculator(tk.Frame):
     self.btnNum1.grid(row = 1, column = 0)
 
   def clickBtnNum1(self):
+    # configure() could modify the properties of a label
     self.lblNum.configure(text = self.lblNum.cget("text") + "1")
 
 cal = Calculator()

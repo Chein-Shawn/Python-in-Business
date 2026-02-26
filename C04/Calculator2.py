@@ -44,10 +44,10 @@ class Calculator(tk.Frame):
     self.btnSqrt.grid(row = 4, column = 2, sticky = tk.NE + tk.SW)
 
   def setNumStr(self, content):
-#    if self.shouldReset == True:
-#      self.lblNum.configure(text = content)
-#      self.shouldReset = False
-#    else: 
+   if self.shouldReset == True:
+     self.lblNum.configure(text = content)
+     self.shouldReset = False
+   else: 
       self.lblNum.configure(text = self.lblNum.cget("text") + content)
 
   def clickBtnNum1(self):
@@ -83,7 +83,7 @@ class Calculator(tk.Frame):
   def clickBtnSqrt(self):
     curNum = float(self.lblNum.cget("text"))
     self.lblNum.configure(text = str(round(math.sqrt(curNum), 2)))
- #   self.shouldReset = True
+    self.shouldReset = True
 
 cal = Calculator()
 cal.master.title("My Calculator")

@@ -6,10 +6,11 @@ from bs4 import BeautifulSoup
 url = 'https://search.books.com.tw/'
 url += 'search/query/cat/all/key/python/sort/1/page/1/v/0/'
 
+# 抓取source code, 放進名為r的class
 r = requests.get(url)
 
-print(r.status_code) # 200
-
+print(r.status_code) # 200: ok!
+# print(requests.codes.ok)
 if r.status_code == requests.codes.ok: # OK!
   print("OK!")
 

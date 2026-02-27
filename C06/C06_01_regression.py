@@ -17,6 +17,7 @@ print(bike.head()) # take a look at the data
 lm = LinearRegression() 
 
 # using precipitation as the independent variable
+# reshape(-1, 1) 的作用是將陣列轉換為 「不限列數，但只有 1 欄」 的二維陣列
 lent = bike["lent"].values.reshape(-1, 1) # reshape the data
 pre = bike["precipitation"].values.reshape(-1, 1)
 
@@ -50,7 +51,7 @@ print("R Square:    ", lm.score(temp, lent))
 # adding the squared temperature
 temp = bike["temperature"].values.reshape(-1, 1)
 tempSq = pow(temp, 2)
-X_temp = np.hstack((temp, tempSq)) 
+X_temp = np.hstack((temp, tempSq))  # be something like a nx2 matrix
 
 lm.fit(X_temp, lent) 
 
@@ -96,8 +97,6 @@ lent_predict = lm.predict(X_future)
 
 print(lent_predict)
 # ===============================================
-
-
 
 
 

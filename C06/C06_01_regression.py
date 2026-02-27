@@ -66,6 +66,9 @@ print("R Square:    ", lm.score(X_temp, lent))
 # ===============================================
 # using all variables we have
 working = bike["workingday"].values.reshape(-1, 1) 
+
+# hour 實際上是類別變數，不是數值變數, 要當作dummy variable處理
+# 24x1 matrix becomes 24x2 matrix that contains 0 and 1 in the column to indicate whether it is that hour
 hourFactor = pd.get_dummies(bike["hour"]) # creating dummy variables
 
 X_full = np.hstack((hourFactor, working, temp, tempSq, pre)) 
@@ -82,6 +85,7 @@ print("R Square:    ", lm.score(X_full, lent))
 
 
 # ===============================================
+# bike_future = pd.read_csv("gongguan_future.csv") 
 bike_future = pd.read_csv("gongguan.csv") 
 print(bike_future.head())
 

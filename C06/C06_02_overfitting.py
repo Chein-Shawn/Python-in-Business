@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 
-bike = pd.read_csv("gongguan_overfitting.csv") # 或 _underfitting、_overfitting 兩個檔案 
+bike = pd.read_csv("gongguan_best.csv") # 或 _underfitting、_overfitting 兩個檔案 
 
 X = bike.drop(["lent"], axis = 1) # 自變數
 y = bike["lent"]                  # 應變數
